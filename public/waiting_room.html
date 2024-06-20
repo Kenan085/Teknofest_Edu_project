@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Socket.IO Multiplayer App</title>
+  <script src="https://cdn.socket.io/4.3.2/socket.io.js"></script>
+</head>
+<body>
+  <h1>Welcome to the Multiplayer App1!</h1>
+  <input id="msgInput" type="text">
+  <button id="sendBtn">Send Message</button>
+  <ul id="messages"></ul>
+
+  <script>
+    console.log(localStorage.getItem('username'))
+    const queryString = window.location.search;
+
+    // Create a new URLSearchParams object
+    const urlParams = new URLSearchParams(queryString);
+
+    // Get individual parameters
+    const quizId1 = urlParams.get('quiz_id');
+    const username1 = urlParams.get('username');
+    var room1 = urlParams.get('room');
+    const socket = io();
+    console.log(room1,username1)
+    if (username1!=null) {
+      socket.emit('join to room for waiting', room1);
+    }
+    
+
+    document.getElementById('sendBtn').addEventListener('click', () => {
+      const msg = document.getElementById('msgInput').value;
+      socket.emit('chat message', msg, room1);
+      document.getElementById('msgInput').value = '';
+    });
+
+    socket.on('chat message', (msg) => {
+      const item = document.createElement('li');
+      item.textContent = msg;
+      document.getElementById('messages').appendChild(item);
+    });
+
+  </script>
+</body>
+</html>

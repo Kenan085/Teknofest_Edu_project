@@ -1,0 +1,26 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "node js/openAi.js",
+    "testMultiplayer": "node js/multiplayer.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.23.9",
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "express": "^4.18.2",
+    "openai": "^4.26.0",
+    "socket.io": "^4.7.4",
+    "three": "^0.160.1"
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3",
+    "parcel-bundler": "^1.12.5"
+  },
+  "main": "bundle.js",
+  "description": ""
+}

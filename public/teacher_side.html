@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiplayer Game</title>
+  <script src="https://cdn.socket.io/4.3.2/socket.io.js"></script>
+</head>
+<body>
+  <h1>Teacher's Room</h1>
+  <p id="username">Teacher</p>
+  <input id="quizIdInput" type="text" placeholder="Enter room name">
+  <button id="createBtn">Create Room</button>
+  <!-- Game content and socket.io logic for game interactions -->
+
+  <script>
+    const socket = io();
+
+
+    document.getElementById('createBtn').addEventListener('click', () => {
+      const username=document.getElementById("username").innerHTML;
+      const quiz_id = document.getElementById('quizIdInput').value;
+      if (quiz_id!=0 && username!="") {
+      //future code
+    }
+      const data = [quiz_id,username]
+      socket.emit('create room', data);
+    });
+    socket.on('connect to the game and send admin_username', (data) => {
+      const baseUrl = "http://localhost:3000/waiting_room.html";
+      const params = {
+          quiz_id: data[0],
+          username: data[1],
+          room: data[2]
+      };
+      const queryString = new URLSearchParams(params).toString();
+      window.location.href = `${baseUrl}?${queryString}`;      
+    });
+    // Add game-related event handlers and logic here
+  </script>
+</body>
+</html>

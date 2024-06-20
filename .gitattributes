@@ -1,0 +1,4 @@
+.parcel-cache/data.mdb filter=lfs diff=lfs merge=lfs -text
+objects/sentinel-1.zip filter=lfs diff=lfs merge=lfs -text
+public/objects/sentinel-1.zip filter=lfs diff=lfs merge=lfs -text
+
